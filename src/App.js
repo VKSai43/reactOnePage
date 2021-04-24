@@ -1,24 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [count,setName] = useState('JOE');
+  const [lock,toggleLock] = useState('UNLOCKED');
+  
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="My Proflie">
+       
       </header>
-    </div>
+        <h1>
+            Hello {count}
+        </h1>
+        <h3>
+        Currently PAGE is : {lock}
+        </h3>
+        <input type = 'text'  id='name' >
+        </input>
+        <input type = 'submit' onClick = {()=> {if(lock === 'UNLOCKED'){setName(document.getElementById("name").value)}}}/>
+        <div>
+        <a>
+         Enter your name to Update
+        </a>
+        <footer>
+        <div>
+        <button onClick = {()=>{ if(lock === 'LOCKED') toggleLock('UNLOCKED'); else toggleLock('LOCKED') }}>Toggle Lock</button>
+        </div>
+        </footer>
+        </div>
+    </div> 
+       
   );
 }
 
